@@ -1,0 +1,217 @@
+{% extends 'monitoringengine_ui/users.html' %}
+{% load monitoringengine_ui_tags %}
+{% load l10n %}
+<table id="table-1" class="table positions-table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th  id="num" class="sort-head"><span class="asc">&darr;</span><span class="desc">&uarr;</span>№</th>
+        <th id="query" class="sort-head"><span class="asc">&darr;</span><span class="desc">&uarr;</span>Запрос</th>
+        
+        {# <th>Поддомены</th> #}
+        <th id="quantity" class="sort-head"><span class="asc">&darr;</span><span class="desc">&uarr;</span> Частотность</th>
+        {% for check in checks %}
+            <th><span class="asc">&darr;</span><span class="desc">&uarr;</span>{{ check|date:"Y-m-d" }}</th>
+        {% endfor %}
+    </tr>
+    </thead>
+    <tbody>
+    <script type="text/javascript">
+        var count=0;
+    </script>
+    {% for query in queries %}
+        <script type="text/javascript">
+            count = {{ forloop.counter }};
+        </script>
+        <tr href="{% url delete_query yandex_account_subscription_id=query.5 %}">
+            <td class="td-count" id="{{ query.5|unlocalize }}" > <div class='number'> {{ forloop.counter }} </div>
+                {% if perms.monitoringengine_ui.owner or perms.monitoringengine_ui.manager %}
+                    <button type="button" href="{% url delete_query yandex_account_subscription_id=query.5 %}" class="query_remove btn"><i class="icon-trash"></i></button>                
+                {% endif %}
+            </td>
+            <td class="last_changed" id="{{ query.7|date:"j m Y H:i:s.u" }}">
+                {% if perms.monitoringengine_ui.owner or perms.monitoringengine_ui.manager %}
+                    <a href="{% url website_query website_id=website_id query_id=query.1 %}">{{ query.2.lower }}</a>
+                {% else %}
+                    {{ query.2.lower }}
+                {% endif %}
+            </td>
+            
+            <td >{{ query.3|default:"-" }}</td>
+            {% for check in checks %}
+                {% with positions_by_queries|key:query.0|key:check as positions_dict %}
+                    {% if positions_dict %}
+                        {% with positions_dict.position as position %}
+                        {% if position >= 0 %}
+                            <td class="{% if position <= 10 %}gold{% else %}{% if position <= 50 %}green{% endif %}{% endif %}">
+                                {{ position }}
+                            </td>
+                        {% else %}
+                            <td>Не попал в {{ positions_dict.max_position }}</td>
+                        {% endif %}
+                        {% endwith %}
+                    {% else %}
+                        {% if check == current_date %}
+                            <td>сбор данных</td>
+                        {% else %}
+                            <td class="text-gray">N/A</td>
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% if perms.monitoringengine_ui.owner or perms.monitoringengine_ui.manager %}
+    <button id="but1" type="button" class="btn btn-primary " name="action"   style="">Редактировать</button>
+    <button id="but3" type="button" class="btn btn-danger" name="action" style="" value="">Готово</button>
+{%endif%}
+<button id="but2" type="button" class="btn btn-success" name="action" value="save">Экспорт</button>
+<div id="dialog-confirm" class="confirmation-dialog" title="Удалить запрос?">
+  <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Внимание! Это действие нельзя будет отменить.</p>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("table.positions-table tbody tr").click(function(){
+            $(this).toggleClass("info");
+        });
+        $(".affix-control").show();
+        $("#reset").hide();
+        $("#select_all").click(function(){
+                $("table.positions-table tbody tr").addClass("info");
+                $("#select_all").hide();
+                $("#reset").show();
+        });
+        $("#reset").click(function(){
+                $("table.positions-table tbody tr").removeClass("info");
+                $("#select_all").show();
+                $("#reset").hide();
+        });
+        $("#delete_changed").click(function(){
+            $("#dialog-confirm").dialog({
+                resizable: false,
+                height: 200,
+                model: true,
+                buttons: {
+                    "Удалить": function() {
+                        $("tr.info").each(function(){
+                            var href = $(this).attr("href");
+                            $.get(href, function(data){});
+                        });
+                        $("tr.info").remove();
+                        $(this).dialog("close");
+                        $("#reset").hide();
+                        $("#select_all").show();
+                    },
+                    "Отменить": function(){
+                        $(this).dialog("close");
+                    }
+                }
+            });            
+        });
+        var req_url = "{% url positions_for_website website_id %}";
+        
+        var helper = function(e, ui) {
+            ui.children().each(function() {
+                $(this).width($(this).width());
+            });
+            return ui;
+        }
+        // var hide_delete = function(){
+        //     $(".query_remove").hide();
+        //     $(".number").show();
+        //     $("#but3").hide();
+        //     $("#but1").show();
+        //     $(".number").each(function (i) {
+        //         $(this).html(i+1);
+        //     });            
+        // }
+
+        var dragUpdate = function(e, ui){
+            check_fresh(req_url, 
+                function(){
+                    request_save(req_url, 
+                        function(html){
+                            update_timestamps(req_url)
+                        }
+                    )
+                }, 
+                function(){
+                    $(".alert").show();
+                    // alert("Данные были изменены другим пользователем");
+                    get_positions_for_website(req_url);
+                }
+            ); 
+        }
+        $(".asc").hide();
+        $(".desc").hide();
+        $(".query_remove").hide();
+        $(".well").hide();
+        $("#but3").hide();
+        var on_sort_head_click = function(){
+            if ($(".var-sorting-order").attr("value") == $(this).attr("id"))
+            {
+                if ($(".var-sorting-by").attr("value") == "desc")
+                   {
+                    $(".var-sorting-by").attr("value","asc");
+                }
+                else {
+                    $(".var-sorting-by").attr("value","desc");
+                }
+            }
+            else
+            {
+                $(".var-sorting-order").attr("value",$(this).attr("id"));
+                $(".var-sorting-by").attr("value","asc");
+            }
+            get_positions_for_website(req_url, update_sorting, $(".var-sorting-order").attr("value"),$(".var-sorting-by").attr("value"));
+        }
+        $(".sort-head").click(on_sort_head_click);
+        $("#but2").offset({bottom:500,left: 650});
+        // $("#but3").offset({left:-85,bottom:100});
+        $("#but1").click(function() {
+            get_positions_for_website(req_url, function(html){
+                update_positions(html);
+                $(".well").show();
+                $("#table-1 tbody").sortable({deactivate: dragUpdate, helper: helper}).disableSelection();
+                $("#table-1 tbody").sortable( "enable" );
+                $("#but1").hide();
+                $("#but3").show();
+                $('.sort-head').off('click');
+            });
+        });
+        $("#but3").click(function(){
+            $(".well").hide();
+            $("#table-1 tbody").sortable( "disable" );
+            $("#but1").show();
+            $("#but3").hide();
+            $('.sort-head').click(on_sort_head_click);
+            $(".number").each(function (i) {
+                $(this).html(i+1);
+            });
+        });
+        
+        $("#but2").click(function(){
+            check_fresh(req_url,
+                function(){
+                    $('#positions-form').submit();
+                },function(){
+                    $(".alert").show();
+                    get_positions_for_website(req_url);
+            });
+        });
+        
+        //$("#but4").hide();
+        //$("#dateSlider").dateRangeSlider();
+
+        
+       // $("form .control-label").hide();
+        // $("#dateSlider").dateRangeSlider(
+        //     "option",
+        //     "bounds",
+        //     {
+        //         min: new Date(2012, 0, 1),
+        //         max: new Date(2012, 11, 31)  
+        //     });
+    });
+</script>

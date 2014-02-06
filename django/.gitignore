@@ -1,0 +1,16 @@
+*.bat
+*.orig
+*.pyc
+*.sh
+.svn
+.project
+.pydevproject*
+.settings
+.installed.cfg
+.idea/*
+ENV/*
+commit.txt
+media/upload/*
+static/*
+monitoringengine_ui/settings.py
+production.py

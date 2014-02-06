@@ -1,0 +1,252 @@
+{% extends 'monitoringengine_ui/users.html' %}
+{% load monitoringengine_ui_tags zenforms %}
+
+{% block title %}
+{% endblock title %}
+
+{%block left_panel%}
+        <div class="affix-control">
+            <div class="well well-large affix" style="top: 350px; width: 240px;height:200px; color:white ">
+                <button id="select_all" type="button" class="btn btn-primary" name="action">Выделить всё</button>
+                <p><button id="reset" type="button" class="btn " name="action">Сброс</button></p>
+                <p><button id="delete_changed" type="button" class="btn btn-danger " name="action"><i class="glyphicon glyphicon-trash"></i> Удалить выделенное</button></p>
+                <div class="btn-group">
+                    <button id="add_to_view" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" name="action">Добавить в представление
+                        <b class="caret"></b></button>
+                    <ul class="dropdown-menu pull-right">
+                        {% for view in object.views.all %}
+                            <li><a href="#" data-name="{{ view.name }}" class="view-clickable" data-url="{% url add_entries  pk=view.id %}">{{ view }}</a></li>
+                        {% endfor %}
+                        <li class="divider"></li>
+                        <li><a href="#" id="create_view" >Создать представление</a></li>
+                    </ul>
+                 </div>
+            </div>
+        </div>
+{% endblock left_panel %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/slider.css"/>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/classic.css" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap3/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/daterangepicker-bs3.css" />
+<!--<link rel="stylesheet" href="{{ STATIC_URL }}css/Graph.css" type="text/css"/>-->
+{% endblock css %}
+
+{% block breadcrumbs %}
+<li class="dropdown">
+    <a href="{{ object.account.get_absolute_url }}" class="navbar-brand">{{ object.account }}</a>
+    <a href="#" class="navbar-brand dropdown-toggle small-dropdown" style="padding:15px 5px;margin:0 -10px"
+       data-toggle="dropdown"><b class="caret"></b></a>
+    <ul class="dropdown-menu">
+        <li><a href="/">Все аккаунты</a></li>
+        <li class="divider"></li>
+        {% for acc in user|accounts %}
+            {% if acc != object.account %}
+                <li><a href="{{ acc.get_absolute_url }}">{{ acc }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</li>
+
+<li class="dropdown" style="margin:0 0 0 30px">
+    <a href="{{ object.get_absolute_url }}" class="navbar-brand">{{ object }}</a>
+    <a href="#" class="navbar-brand dropdown-toggle small-dropdown" style="padding:15px 5px;margin:0 -10px"
+       data-toggle="dropdown"><b class="caret"></b></a>
+    <ul class="dropdown-menu">
+        <li><a href="/">Все ресурсы</a></li>
+        <li class="divider"></li>
+        {% for res in object.account.resources.all %}
+            {% if res != object %}
+                <li><a href="{{ res.get_absolute_url }}">{{ res }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</li>
+{% endblock breadcrumbs %}
+
+{% block left_menu %}
+    {% if user|can_read:object %}
+        <li><a href="#site"><i class="glyphicon glyphicon-chevron-right pull-right"></i>Информация о сайте</a></li>
+    {% endif %}
+        <li><a href="#graphSection"><i class="glyphicon glyphicon-chevron-right pull-right"></i>График</a></li>
+        <li><a href="#positions"><i class="glyphicon glyphicon-chevron-right pull-right"></i>Позиции</a></li>
+
+        <!--<li><a href="#views"><i class="glyphicon glyphicon-chevron-right pull-right"></i>Представления</a></li>-->
+        {{ block.super }}
+{% endblock %}
+
+{% block content %}
+<input type="hidden" id="last-changed" value="">
+<input type="hidden" id="url_create_view"  value="{% url create_view pk=object.id %}">
+
+<input type="hidden" id="url_positions"  value="{% url positions pk=object.id %}">
+<input type="hidden" id="url_fresh"  value="{% url check_fresh pk=object.id %}">
+<input type="hidden" id="url_save"  value="{% url save_view pk=object.id %}">
+<input type="hidden" id="url_sync"  value="{% url view_sync pk=object.id %}">
+<input type="hidden" id="url_delete_entries"  value="{% url delete_entries pk=object.id %}">
+
+<input type="hidden" id="positions1" value="{% url positions_slider pk=object.id %}">
+
+<input class="variable" type="hidden" id="view-id" value="">
+<input class="variable" type="hidden" id="region-id" value="">
+<input class="variable" type="hidden" id="date-since" value="">
+<input class="variable" type="hidden" id="date-until" value="">
+
+{% if user|can_read:object %}
+
+<section id="site">
+    <div class="page-header">
+        <h1>{{ object }}</h1>
+    </div>
+    {% if user|can_edit:object %}
+    <div class="row">
+        <form class="navbar-form navbar-left" method="post" action="">
+            <!--<label class="control-label">{{ note_form.note.label }}</label>-->
+            <h3>Примечание</h3>
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="note" value="{{ object.note }}">
+            </div>
+            <button value="submit" class="btn btn-primary">Изменить</button>
+        </form>
+    </div>
+    {% elif object.note %}
+    <h2>Примечание</h2>
+    {{ object.note }}
+    {% else %}
+    <h2>Для этого ресурса не добавлено примечание</h2>
+    {% endif %}
+</section>
+
+<!--<section id="graphSection">-->
+    <!--<div class="page-header">-->
+        <!--<h1>График</h1>-->
+    <!--</div>-->
+    <!--<div id="graph1"></div>-->
+    <!--<div id="graph2"></div>-->
+<!--</section>-->
+
+<section id="positions">
+    <div class="page-header">
+        <h1>Позиции
+            <a href="{% url edit_resource resource_id=object.id%}" class="pull-right"><i style="color:#333; font-size: 20px; top: 10px" class="glyphicon glyphicon-cog"></i></a>
+            <small style="color:#333"><span class="dropdown view_dropdown">
+                <span>{{object.views.all.0}}</span>
+                    <a href="#" class="dropdown-toggle small-dropdown" style="padding:15px 5px;margin:0 -10px"
+                    data-toggle="dropdown"><b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        {% for view in object.views.all %}
+                            <li><a data-url="{% url positions_with_regions pk=object.id %}" data-view_id="{{view.id}}" class="black-link{% if view.name == default_view_name %} default-view{% endif %}">{{ view }}</a></li>
+                        {% endfor %}
+                     </ul>
+            </span>
+                </small>
+        </h1>
+    </div>
+    <div id="slider" data-date_since="{{ date_since|date:'Y/m/d' }}" data-date_until="{{ date_until|date:'Y/m/d' }}" data-date_mid="{{ date_mid|date:'Y/m/d' }}"></div>
+    <form>
+      <div class="form-group">
+        <!--<label for="reservationtime">Reservation dates:</label>-->
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar" style="height:10px;"></i></span><input type="text" class="form-control" name="reservation" id="reservationtime" class="col-xs-4"  />
+        </div>
+      </div>
+    </form>
+    <div class="btn-group pull-right">
+      <button type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown">
+        Выбор диапазона <span class="caret"></span>
+      </button>
+      <ul id="range_dropdown" class="dropdown-menu" role="menu">
+        <li><a data-range="92">3 месяца</a></li>
+        <li><a data-range="183">6 месяцев</a></li>
+        <li><a data-range="365">1 год</a></li>
+        <!--<li class="divider"></li>-->
+        <!--<li><a data-range="360">Весь период</a></li>-->
+      </ul>
+    </div>
+
+    <ul class="nav nav-pills">
+       {% for region in regions %}
+           <li class="pill">
+               <a class="pill-region" data-region="{{ region.id }}">
+                   Яндекс-{{region}}
+               </a>
+           </li>
+       {% endfor %}
+    </ul>
+
+    <div class="alert alert-success" id="alert-success">Запросы были успешно добавлены.</div>
+    <div class="alert alert-danger" id="alert-delete">Запросы были успешно удалены.</div>
+    {% if object.subscriptions.count %}
+    <div id="subscriptions-table"></div>
+    {% else %}
+        <h2>Для этого ресурса не было добавлено ни одного запроса</h2>
+    {% endif %}
+</section>
+
+
+
+
+    {% endif %}
+<!-- Modal -->
+<div class="modal fade" id="modal-add-entries" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title1"></h4>
+            </div>
+            <div id="modal-body1" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                <a id="btn-ok" class="btn btn-primary" data-dismiss="modal">ОК</a>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{% endblock content %}
+
+
+ {% block js %}
+{{block.super}}
+<script type="text/javascript" src="{{ STATIC_URL }}js/jQDateRangeSlider-withRuler-min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/resource-page.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+    $("#positions").on("click", ".pill-region", pill_region_click);
+    $("#positions").on("click", '#button-export', button_export_click);
+    $("#positions").on("click", "#button-edit", button_edit_click);
+    $("#positions").on("click", "#range_dropdown a", click_range_dropdown);
+    $("#delete_changed").click(delete_change_click);
+    $("#subscriptions-table").on("click", "#button-done", button_done_click);
+    $("#subscriptions-table").on("click", "#positions-table tbody tr", tr_click);
+
+    $(".view_dropdown").on('click', 'ul li a', ajax_view_dropdown);
+    $("#select_all").click(select_all_click);
+    $("#reset").click(reset_click);
+    $("#create_view").click(create_view_click);
+    $(".view-clickable").click(view_clickable_click);
+
+    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' });
+
+    slider();
+    $('.pill:first-child a').click();
+    $('.view_dropdown ul li:first-child a').click();
+    getPositions({});
+
+    $('input.variable').change(function(){ getPositions({}); });
+});
+</script>
+<script src="http://d3js.org/d3.v2.min.js?2.10.0"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/moment.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/daterangepicker.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/Graph.js"></script>
+{% endblock js%}

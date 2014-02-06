@@ -1,0 +1,138 @@
+/**
+ * default development theme for jQRangeSlider
+ * Using fam fam icon set from Mark James, http://www.famfamfam.com/lab/icons/silk/ (Creative Commons Attribution 2.5 License)
+ */
+
+.ui-rangeSlider{
+	height:22px;
+}
+
+.ui-rangeSlider .ui-rangeSlider-innerBar{
+	height:16px;
+	margin:3px 6px;
+	background:#FFF;
+	border: 1px solid #DDD;
+	border-radius: 4px;
+}
+
+.ui-rangeSlider .ui-rangeSlider-handle{
+	width:6px;
+	height:22px;
+	background:#428bca;
+	/*background:rgba(0,128,192, 1);*/
+	cursor:col-resize;
+}
+
+.ui-rangeSlider .ui-rangeSlider-bar{
+	margin: 1px 0;
+	background:#CCC;
+	background:rgba(0,128,192, 0.2);
+	height:20px;
+	cursor:move;
+	cursor:grab;
+	cursor: -moz-grab;
+}
+
+.ui-rangeSlider .ui-rangeSlider-bar.ui-draggable-dragging{
+	cursor:	-moz-grabbing;
+	cursor:grabbing;
+}
+
+.ui-rangeSlider-arrow{
+	height:16px;
+	margin:2px 0;
+	width:16px;
+	background-repeat:no-repeat;
+}
+
+.ui-rangeSlider-arrow.ui-rangeSlider-leftArrow{
+	background-image: url('icons-classic/Arrowhead-Left-24 .png');
+	background-position:center left;
+}
+
+.ui-rangeSlider-arrow.ui-rangeSlider-rightArrow{
+	background-image: url('icons-classic/Arrowhead-Right-24 .png');
+	background-position:center right;
+}
+
+.ui-rangeSlider-arrow-inner{
+	display: none;
+}
+
+.ui-rangeSlider-container{
+	height:22px;
+}
+
+.ui-rangeSlider-withArrows .ui-rangeSlider-container{
+	margin:0 11px;
+}
+
+.ui-rangeSlider-noArrow .ui-rangeSlider-container{
+	margin:0;
+}
+
+.ui-rangeSlider-label{
+	padding: 5px 10px;
+  bottom:33px;
+  background:#428bca;
+
+  -moz-border-radius: 4px;
+       border-radius: 4px;
+
+
+
+  color:white;
+  font-size:14px;
+
+  cursor:col-resize;
+}
+
+.ui-rangeSlider-label-inner{
+	position: absolute;
+  top: 100%;
+  left: 50%;
+  display: block;
+  z-index:99;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+
+  margin-left: -10px;
+  border-top: 10px solid #428bca;
+}
+.ui-rangeSlider-disabled .ui-rangeSlider-label-inner{
+  border-top-color: #b2bbd8;
+}
+
+/*
+ * Edit slider
+ */
+
+input.ui-editRangeSlider-inputValue{
+	width:3em;
+	vertical-align: middle;
+	text-align:center;
+}
+.ui-rangeSlider .ui-ruler-tick {
+  float: left;
+}
+
+.ui-rangeSlider .ui-ruler-scale0 .ui-ruler-tick-inner{
+  color:#AAA;
+  margin-top:1px;
+  border-left: 1px solid #DDD;
+  height:13px;
+  padding-left:2px;
+  position:relative;
+
+}
+
+.ui-rangeSlider .ui-ruler-scale0 .ui-ruler-tick-label{
+  position:absolute;
+  bottom: -25px;
+}
+
+.ui-rangeSlider .ui-ruler-scale1 .ui-ruler-tick-inner{
+  border-left:1px solid black;
+  margin-top: 25px;
+  height: 5px;
+}

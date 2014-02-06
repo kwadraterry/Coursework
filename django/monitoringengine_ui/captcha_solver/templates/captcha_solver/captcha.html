@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load cache %}
+
+{% block user_info %}
+{% endblock %}
+
+{% block content %}
+    <div class="page-header hidden-phone">
+        <h1>Необходимо решить капчу</h1>
+    </div>
+    <form method="post" action="." class="form-horizontal">
+        <img src="{{ captcha_url }}" alt="Капча"/>
+        {{ form }}
+        <input type="submit" value="Отправить" class="submit btn btn-primary"/>
+    </form>
+{% endblock content %}

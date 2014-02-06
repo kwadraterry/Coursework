@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load monitoringengine_ui_tags %}
+
+{% block title %}
+    {% block content_title %}
+        Главная
+    {% endblock content_title %}
+{% endblock title %}
+
+{% block js %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".user_remove").each(function(){
+                $(this).click(function() {
+                    var element = $(this)
+                    var href = $(this).attr("href");
+                    $.get(href, function(data){
+                        if (data.deleted){element.parents("tr").remove()};
+                    });
+                    return false;
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block left_menu %}
+    <li><a href="#sites"><i class="icon-chevron-right"></i>Список сайтов</a></li>
+    {% if perms.monitoringengine_ui.owner or perms.monitoringengine_ui.manager %}
+        <li><a href="#account_info"><i class="icon-chevron-right"></i>Информация об аккаунте</a></li>
+        <li><a href="#users"><i class="icon-chevron-right"></i>Пользователи</a></li>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <section id="sites">
+        <div class="page-header">
+            <h1>Список сайтов</h1>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th class="span1">№</th>
+                <th>Имя хоста</th>
+                <th>Примечание</th>
+                <th>Запросов в Яндексе</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for site in sites %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>
+                        <a href="http://{{ site.1 }}"><img src="{{ STATIC_URL }}img/approved.png" class="globe"/></a>
+                        <a href="{% url website website_id=site.0 %}">{{ site.1|decode_idna }}</a>
+                    </td>
+                    <td>{{ site.2|default:"" }}</td>
+                    <td>{{ site.3|default:"" }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% if perms.monitoringengine_ui.owner %}
+            <form action="{% url add_website %}" method="post">
+                {{ form.non_field_errors }}
+                <div class="table-cell">{{ form.hostname.errors }}{{ form.hostname }}</div>
+                <div class="table-cell"><input type="submit" value="Добавить" class="submit btn"/></div>
+            </form>
+        {% endif %}
+    </section>
+    {% if perms.monitoringengine_ui.owner or perms.monitoringengine_ui.manager %}
+        <section id="account_info">
+            <div class="page-header">
+                <h1>Информация об аккаунте</h1>
+            </div>
+            <p>Текущее количество запросов:  {% get_account_subscriptions_number %}</p>
+            <p>Максимальное количество запросов:  {{ max_account_subscriptions|default:"Неограниченно" }}</p>
+        </section>
+        <section id="users">
+            <div class="page-header">
+                <h1>Пользователи</h1>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                <th class="span1">№</th>
+                <th>Пользователь</th>
+                <th>E-mail подтвержден</th>
+                <th>Роль</th>
+                {% if perms.monitoringengine_ui.owner %}
+                    <th class="span1"><a href="{% url add_user %}" class="btn"><i class="icon-plus"></i></a></th>
+                {% endif %}
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>
+                            {% if user.is_client %}
+                                <a href="{% url change_client user_id=user.id %}">{{ user.email }}</a>
+                            {% else %}
+                                {{ user.email }}
+                            {% endif %}
+                        </td>
+                        <td>{{ user.profile.email_verified|yesno:"да,нет" }}</td>
+                        <td>{{ user.user_permissions.all.0.name }}</td>
+                        {% if perms.monitoringengine_ui.owner %}
+                            <td><button type="button" href="{% url delete_user user_id=user.id %}" class="user_remove btn"><i class="icon-trash"></i></button></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    {% endif %}
+{% endblock content %}

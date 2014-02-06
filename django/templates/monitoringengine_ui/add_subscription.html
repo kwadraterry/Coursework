@@ -1,0 +1,41 @@
+{% extends 'base3.html' %}
+{% load zenforms %}
+
+
+{% block content %}
+<form  method="post" action="">
+    <div class="page-header">
+        <h1>Добавление запроса</h1>
+     </div>
+    <h3>Поисковый запрос</h3>
+    <input type="text" class="form-control" name="querystring">
+    <h3>Поддомены для сайта</h3>
+        {{ form.subdomain_include }}
+    <h3>Глубина поиска</h3>
+    <input type="text" class="form-control" name="search_depth">
+    <h3>Регионы Яндекса</h3>
+    <div class="form-group">{{ form.regions }}</div>
+    <input type="submit"  class="btn btn-primary" value="Отправить">
+</form>
+{% endblock content %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/add_subscription.css"/>
+    {% endblock css %}
+
+{% block js %}
+     {{ block.super }}
+     <script type="text/javascript">
+        $(document).ready(function(){
+            $("input.textInput").addClass("form-control");
+            $("select").addClass("form-control");
+            $("label").each(function(index) { var thisTD = this; var newElement = $("<span></span>");
+                $.each(this.attributes, function(index) {
+                    $(newElement).attr(thisTD.attributes[index].name, thisTD.attributes[index].value); });
+                newElement.html($(this).html());
+                $(this).after(newElement).remove();
+            });
+        });
+     </script>
+{% endblock js %}

@@ -1,0 +1,25 @@
+{% extends 'base3.html' %}
+
+{% block left_menu %}
+    <li><a href="#add_user"><i class="glyphicon glyphicon-chevron-right pull-right"></i>Добавление пользователя</a></li>
+{% endblock %}
+
+{% block content %}
+    <section id="add_user">
+        <div class="page-header">
+            <h1>Добавление пользователя</h1>
+        </div>
+        <form action="" method="POST" class="form-horizontal">
+            {% if form.non_field_errors %}
+                <div class="control-group error">{{ form.non_field_errors }}</div>
+            {% endif %}
+            <div class="navbar{% if form.username.errors %} error{% endif %}">
+                <label class="control-label" for="id_query">{{ form.username.label }}</label>
+                <div class="controls">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </form>
+    </section>
+{% endblock content %}

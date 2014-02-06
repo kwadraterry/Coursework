@@ -1,0 +1,250 @@
+{% extends 'base.html' %}
+{% load monitoringengine_ui_tags zenforms %}
+
+{% block title %}
+{% endblock title %}
+
+{% block js %}
+    {{ block.super }}
+    <script src="{{ STATIC_URL }}js/jquery.fixedheadertable.js"></script>
+    <script type="text/javascript">
+
+        function getData(dataclass){
+            var s = "";
+            var list = $(dataclass);
+            for(var i = 0; i < list.length; i++) {
+                s += list[i].id+';';
+            }
+            return s;
+        }
+
+        function get_form_data(){
+            var data = {};
+            data.region = $('#id_region').val();
+            data.date_since = $('#id_date_since').attr('value');
+            data.date_until = $('#id_date_until').attr('value');
+            data.search_engine = $('#id_search_engine').val();
+            data.subdomain_include = $('#id_subdomain_include').val();
+            data.request_kind = "save";
+            data.request_kind = "table";
+            return data;
+        }
+        function update_positions(html){
+            $('.positions-results').html(html);
+            $('.positions-results').show();
+            $('.spinner').hide();
+        }
+        function update_sorting(html){
+           update_positions(html);
+           $("th#" + $(".var-sorting-order").attr("value") + " span." + $(".var-sorting-by").attr("value")).show();
+        }
+        function get_positions_for_website(url, success, sorting_by, asc){
+            success = typeof success !== 'undefined' ? success : update_positions;
+            $('.positions-results').hide();
+            $('.spinner').show();
+            var data = get_form_data();
+            data.type = "update_table";
+            if (typeof sorting_by !== 'undefined') {
+                data.sorting_by = sorting_by;
+                data.asc = asc;
+            }
+            $.ajax({type: 'POST',
+                url: url,
+                data: data,
+                success: success,
+                error: function(jqXHR, textStatus, errorThrown){
+                    if (jqXHR.status===400){
+                        $('.positions-results').html('<h2 class="centered">Неверный запрос</h2><div class="centered">'+jqXHR.responseText+'</div>');
+                    }
+                    else{
+                        $('.positions-results').html('<h2 class="centered">Ошибка при получении данных</h2>');
+                    }
+                    $('.positions-results').show();
+                    $('.spinner').hide();
+                },
+                dataType: 'html'});
+        }
+        function check_fresh(url,on_true,on_false){
+            var data = get_form_data();
+            data.last_changed = getData(".last_changed");
+            data.type = "is_fresh";
+            $.ajax({type: 'POST',
+                url: url,
+                data: data,
+                success: function (html){
+                    if (html === "True") {
+                        on_true(url);
+                    }
+                    else {
+                        on_false(url);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    if (jqXHR.status===400){
+                        $('.positions-results').html('<h2 class="centered">Неверный запрос</h2><div class="centered">'+jqXHR.responseText+'</div>');
+                    }
+                    else{
+                        $('.positions-results').html('<h2 class="centered">Ошибка при получении данных</h2>');
+                    }
+                    $('.positions-results').show();
+                    $('.spinner').hide();
+                },
+                dataType: 'html'});
+        }
+        
+        function request_save(url, success){
+            var data = get_form_data();
+            data.type = "save";
+            data.sorting_order = getData(".td-count");
+            $.ajax({type: 'POST',
+                url: url,
+                data: data,
+                success: success,
+                error: function(jqXHR, textStatus, errorThrown){
+                    if (jqXHR.status===400){
+                        $('.positions-results').html('<h2 class="centered">Неверный запрос</h2><div class="centered">'+jqXHR.responseText+'</div>');
+                    }
+                    else{
+                        $('.positions-results').html('<h2 class="centered">Ошибка при получении данных</h2>');
+                    }
+                    $('.positions-results').show();
+                    $('.spinner').hide();
+                },
+                dataType: 'html'});
+        }
+
+        function update_timestamps(url){
+            var data = get_form_data();
+            data.type = "get_timestamps";
+            $.ajax({type: 'POST',
+                url: url,
+                data: data,
+                success: function(html){
+                    $('.last_changed').attr("id", html);
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    if (jqXHR.status===400){
+                        $('.positions-results').html('<h2 class="centered">Неверный запрос</h2><div class="centered">'+jqXHR.responseText+'</div>');
+                    }
+                    else{
+                        $('.positions-results').html('<h2 class="centered">Ошибка при получении данных</h2>');
+                    }
+                    $('.positions-results').show();
+                    $('.spinner').hide();
+                },
+                dataType: 'html'});
+        }
+
+        $(document).ready(function(){
+            get_positions_for_website("{% url positions_for_website website_id %}")
+            $("#positions-form input, select").change(function() {
+                get_positions_for_website("{% url positions_for_website website_id %}")
+            });
+            $("#but2").click(function(e,ui){get_positions_for_website("{% url positions_for_website website_id %}")});
+            $(".alert").hide();
+            $("#id_date_since, #id_date_until").datepicker({
+                dateFormat: 'yy-mm-dd',
+                firstDay: 1,
+                minDate: "{{ min_date|date:'Y-m-d' }}",
+                maxDate: "{{ max_date|date:'Y-m-d' }}"
+            });
+            $(".span3").append('<div class="affix-control"><div class="well well-large affix" style="top: 350px; width: 210px;height:100px; color:white "><button id="select_all" type="button" class="btn " name="action">Выделить всё</button><p><button id="reset" type="button" class="btn " name="action">Сброс</button></p><p><button id="delete_changed" type="button" class="btn btn-danger " name="action"><i class="icon-trash"></i> Удалить выделенное</button></p></div><div>');
+            $(".affix-control").hide();
+        })
+
+    </script>
+{% endblock %}
+
+{% block left_menu %}
+    {% if perms.monitoringengine_ui.owner or perms.monitoringengine_ui.manager %}
+        <li><a href="#site"><i class="icon-chevron-right"></i>Информация о сайте</a></li>
+    {% endif %}
+    <li><a href="#positions"><i class="icon-chevron-right"></i>Позиции</a></li>
+{% endblock %}
+
+{% block content %}
+    {% if perms.monitoringengine_ui.owner or perms.monitoringengine_ui.manager %}
+        <section id="site">
+            <div class="page-header">
+                <h1>{{ site_url|decode_idna }}</h1>
+            </div>
+            <form class="positions-form form-inline" method="post" action=".">
+                <label class="control-label">{{ note_form.note.label }}</label>
+                <div class="form-part">
+                    <div class="control-group">
+                        <div class="controls form-inline">
+                            {{ note_form.note }}
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" name="action" value="save">Изменить</button>
+                </div>
+            </form>
+        </section>
+    {% endif %}
+
+    <section id="positions">
+        <div class="page-header">
+            <h1>Позиции</h1>
+        </div>
+        <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Внимание!</strong> Данные были изменены другим пользователем.
+        </div>
+        {% if is_subscriptions %}
+        <form id="positions-form" class="positions-form form-inline" method="post" action="{% url positions_for_website website_id %}">
+            <input type="hidden" class="var-sorting-order" name="sorting_by" value="">
+            <input type="hidden" class="var-sorting-by" name="asc" value="">
+            <input type="hidden" class="hidden-type" name="type" value="save">
+            <div class="form-part">
+                <div class="control-group">
+                    <label class="control-label">Начало временного диапазона</label>
+                    <div class="controls form-inline">
+                        {{ form.date_since }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Конец временного диапазона</label>
+                    <div class="controls form-inline">
+                        {{ form.date_until }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-part">
+            <div class="control-group">
+                <div class="controls form-inline">
+                    {{ form.region }}
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls form-inline">
+                    {{ form.search_engine }}
+                </div>
+            </div>
+            </div>
+            <div class="form-part">
+            <label class="control-label horizontal">{{ form.subdomain_include.label }}</label>
+            <div class="control-group">
+                <div class="controls">
+                    {{ form.subdomain_include }}
+                </div>
+            </div>
+            {% if perms.monitoringengine_ui.owner or perms.monitoringengine_ui.manager %}
+                <a href="{% url add_query website_id=website_id %}" class="btn"><i class="icon-plus"></i></a>
+            {% endif %}
+            </div>
+            <div class="spinner">
+                <img src="{{ STATIC_URL }}img/ajax-loader.gif"/>
+            </div>
+            <div class="positions-results">
+            </div>
+        </form>
+        {% else %}
+            <h2>Для данного сайта не было добавлено ни одного запроса</h2>
+            {% if perms.monitoringengine_ui.owner or perms.monitoringengine_ui.manager %}
+                <a href="{% url add_query website_id=website_id %}" class="btn">Добавить</a>
+            {% endif %}
+        {% endif %}
+    </section>
+
+
+{% endblock content %}

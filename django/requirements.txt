@@ -1,4 +1,0 @@
-django-zenforms == 0.1.7
-django-classy-tags>=0.3,<0.4
-odslib >=1.0, <1.1
-django-social-auth ==0.7.23

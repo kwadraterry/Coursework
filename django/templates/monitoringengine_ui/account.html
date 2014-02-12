@@ -1,0 +1,117 @@
+{% extends 'monitoringengine_ui/users.html' %}
+{% load monitoringengine_ui_tags zenforms %}
+
+{% block title %}
+    {% block content_title %}
+{{ object }}
+{% endblock content_title %}
+{% endblock title %}
+
+{% block js %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".user_remove").each(function(){
+                $(this).click(function() {
+                    var element = $(this)
+                    var href = $(this).attr("href");
+                    $.get(href, function(data){
+                        if (data.deleted){element.parents("tr").remove()};
+                    });
+                    return false;
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+
+{% block left_menu %}
+{% if user|can_read:object %}
+<li>
+    <a href="#account_info">
+        <i class="glyphicon glyphicon-chevron-right pull-right"></i>
+        Информация об аккаунте
+    </a>
+</li>
+{% endif %}
+<li><a href="#sites"><i class="glyphicon glyphicon-chevron-right pull-right"></i>Ресурсы</a></li>
+{{ block.super }}
+{% endblock %}
+
+{% block breadcrumbs %}
+<li class="dropdown">
+    <a href="{{ object.get_absolute_url }}" class="navbar-brand">{{ object }}</a>
+    <a href="#" class="navbar-brand dropdown-toggle small-dropdown" style="padding:15px 5px;margin:0 -10px" data-toggle="dropdown"><b class="caret"></b></a>
+    <ul class="dropdown-menu">
+    <li><a href="/">Все аккаунты</a></li>
+    <li class="divider"></li>
+    {% for acc in user|accounts %}
+        {% if acc != object %}
+        <li><a href="{{ acc.get_absolute_url }}">{{ acc }}</a></li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+</li>
+{% endblock breadcrumbs %}
+
+
+{% block content %}
+<section id="account_info">
+    <div class="page-header">
+        <h1>{{ object.name }}</h1>
+    </div>
+    {% if user|can_read:object %}
+    <p>Текущее количество запросов: {{ object|subscriptions_number }}</p>
+
+    <p>Максимальное количество запросов: {{ object.max_subscriptions_number|default:"Не ограничено" }}</p>
+    {%endif%}
+</section>
+<section id="sites">
+        <div class="page-header">
+            <h1>Ресурсы</h1>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th class="col-md-1">№</th>
+                <th>Имя хоста</th>
+                <th>Примечание</th>
+                <th>Запросов в Яндексе</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for resource in object.resources.all %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>
+                <a href="http://{{ resource.website.hostname }}"><img src="{{ STATIC_URL }}img/approved.png" class="globe"/></a>
+                    <a href="{{ resource.get_absolute_url }}">{{ resource.website.hostname|decode_idna }}</a>
+                </td>
+                    <td>{{ resource.note|default:"" }}</td>
+                <td>{{ resource.subscriptions.count|default:"‒" }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% if user|can_edit:object %}
+    <div class="row">
+        <form action="{% url add_resource pk=object.id %}" method="post" class="navbar-form navbar-left">
+            {{ form.non_field_errors }}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+    <div class="form-group">
+                {{ form.hostname.errors }}
+                {{ form.hostname|attrs:'class="form-control"' }}
+            </div>
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </form>
+    </div>
+    {% endif %}
+</section>
+
+{% endblock content %}

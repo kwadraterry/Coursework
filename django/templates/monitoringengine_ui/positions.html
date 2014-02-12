@@ -1,0 +1,54 @@
+{% load monitoringengine_ui_tags %}
+{% load l10n %}
+<input type="hidden" id="last-changed" value="{{ object.last_changed.isoformat }}">
+<table id="positions-table" class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>№</th>
+        <th>Запрос</th>
+        <th>Частотность</th>
+        {% for check in checks %}
+        <th class="date date-{{ check|date:'Y-n-j' }}">{{ check|date:"Y-m-d" }}</th>
+        {% endfor %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for entry in object.entries|filter_entries_by_region:region|filter_entries_by_subscribed %}
+        <tr data-id="{{entry.id|unlocalize}}" class="sorting-order" id="{{ entry.id|unlocalize }}">
+        <td>{{ forloop.counter }}</td>
+            <td>
+                <a href="{% url resource_query resource_id=entry.subscription.resource.id query_id=entry.subscription.subscription.query.id %}">
+                    {{ entry.subscription.subscription.query }}
+                </a>
+            </td>
+            <td>{{ entry.subscription.subscription.quantities.latest.quantity }}</td>
+            {% for check in checks %}
+            {% with entry.subscription.id as resource_subscription_id %}
+            {% with positions|key:resource_subscription_id|key:check as positions_dict %}
+                {% if positions_dict %}
+                    {% with positions_dict.position as position %}
+                    {% if position >= 0 %}
+                        <td class="date date-{{ check|date:'Y-n-j' }} {% if position <= 10 %}green{% else %}{% if position <= 50%}gold{% endif %}{% endif %}">
+                            {{ position }}
+                        </td>
+                    {% else %}
+                        <td class="date date-{{ check|date:'Y-n-j' }}">Не попал в {{ positions_dict.max_position }}</td>
+                    {% endif %}
+                    {% endwith %}
+                {% else %}
+                    {% if check == current_date %}
+                        <td class="date date-{{ check|date:'Y-n-j' }}">сбор данных</td>
+                    {% else %}
+                        <td class="date date-{{ check|date:'Y-n-j' }} text-gray">N/A</td>
+                    {% endif %}
+                {% endif %}
+            {% endwith %}
+            {% endwith %}
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+

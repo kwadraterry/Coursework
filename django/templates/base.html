@@ -1,0 +1,121 @@
+{% load monitoringengine_ui_tags %}
+{% block html %}
+<!DOCTYPE HTML>
+<html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en">    <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="en">        <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie10 lt-ie9" lang="en">                <![endif]-->
+<!--[if IE 9]>
+<html class="no-js lt-ie10" lang="en">                        <![endif]-->
+<!--[if gt IE 9]>
+<html class="no-js" lang="en">                                <![endif]-->
+<head>
+    {% block head %}
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    {% block seo %}
+    <meta name="keywords" content="{% block keywords %}{% endblock %}"/>
+    <meta name="description" content="{% block description %}{% endblock %}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Monitoringengine{% endblock %}</title>
+    {% endblock seo %}
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/flick/jquery-ui-1.9.0.custom.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/docs.css"/>
+    {% endblock css %}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ STATIC_URL }}img/favicon.ico"/>
+    {% endblock head %}
+</head>
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+{% block body %}
+<div class="wrapper">
+    <div id="header" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <ul class="nav pull-right">
+                    {% block user_info %}
+                    {% if request.user.is_authenticated %}
+                    <li class="navbar-text">{{ request.user.email }}</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                                class="icon-cog icon-white"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url user_info %}">Информация о пользователе</a></li>
+                            <li><a href="{% url password_change %}">Изменить пароль</a></li>
+                            <li><a href="{% url logout %}">Выйти</a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                    {% endblock %}
+                </ul>
+                {% block header %}
+                <ul id="main-menu" class="nav">
+                    <li><a href="/" class="logo"><img src="{{ STATIC_URL }}img/hal_9000.png"/><span class="brand">MonitoringEngine</span></a>
+                    </li>
+                    {% block main_menu %}
+                    {% endblock %}
+                </ul>
+                {% endblock header %}
+            </div>
+        </div>
+    </div>
+    {% block container %}
+    <div class="container">
+        <div class="row">
+            <div class="span3 bs-docs-sidebar">
+                <ul class="nav nav-list bs-docs-sidenav affix">
+                    {% block left_menu %}
+                    {% endblock %}
+                </ul>
+            </div>
+            <div class="span9">
+                {% block center %}
+                {% block messages %}
+                {% if messages %}
+                <div class="alert alert-success">
+                    {% for message in messages %}
+                    <div>{{ message }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endblock %}
+                {% block content %}{% endblock %}
+                {% endblock center %}
+            </div>
+        </div>
+    </div>
+    {% endblock container %}
+    <div class="push"></div>
+</div>
+<div id="footer" class="container">
+    {% block footer %}
+    <div class="row">
+        <div id="copyright" class="span12">
+            {% block copyright %}ООО "Редсолюшн" &copy; 2012{% endblock %}
+        </div>
+    </div>
+    {% endblock footer %}
+</div>
+{% endblock body %}
+{% block js %}
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+<script src="{{ STATIC_URL }}js/jquery-ui-1.9.0.custom.min.js"></script>
+<script src="{{ STATIC_URL }}js/bootstrap-scrollspy.js"></script>
+<script type="text/javascript">
+		$(function(){
+			$('html').removeClass('no-js');
+		});
+
+
+
+</script>
+{% endblock js %}
+</body>
+</html>
+{% endblock html %}

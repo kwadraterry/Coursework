@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7dbf0694-667e-4e26-bcbb-839ba75f5a8b" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/css/icons-classic/Arrowhead-Left-24 .png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/css/icons-classic/Arrowhead-Right-24 .png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/img/ajax-loader.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/img/approved.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/img/facebook.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/img/favicon.ico" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/bootstrap3/fonts/glyphicons-halflings-regular.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/bootstrap3/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/bootstrap3/fonts/glyphicons-halflings-regular.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/img/glyphicons-halflings-white.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/img/glyphicons-halflings.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/img/google.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/img/hal_9000.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/css/icons-classic/label.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/img/odnoklassniki.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/img/twitter.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/img/vkontakte.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/404.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/500.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/css/960.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/js/Chart.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/css/Graph.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/js/Graph.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/captcha_solver/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/templatetags/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/monitoringengine_ui/account.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/css/add_subscription.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/monitoringengine_ui/add_subscription.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/monitoringengine_ui/add_user.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/admin.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/backends.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/base.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/base3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/css/bootstrap-responsive.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/js/bootstrap-scrollspy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/js/bootstrap-slider.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/bootstrap3/css/bootstrap-theme.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/bootstrap3/css/bootstrap-theme.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/bootstrap3/css/bootstrap.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/bootstrap3/js/bootstrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/bootstrap3/css/bootstrap.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/css/bootstrap.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/bootstrap3/js/bootstrap.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/js/bootstrap.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/captcha_solver/templates/captcha_solver/captcha.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/monitoringengine_ui/change_client.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/css/classic.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/css/daterangepicker-bs2.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/css/daterangepicker-bs3.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/js/daterangepicker.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/templates/authorisation/emails/default.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/development.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/django.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/css/docs.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/monitoringengine_ui/edit_resource.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/templates/authorisation/emails/email_change.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/templates/authorisation/email_verification.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/templates/authorisation/emails/email_verification.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/forms.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/forms.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/captcha_solver/forms.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/monitoringengine_ui/frontpage3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/generic_settings.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/bootstrap3/fonts/glyphicons-halflings-regular.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/css/iThing.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/js/jQDateRangeSlider-withRuler-min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/css/flick/jquery-ui-1.9.0.custom.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/css/flick/jquery-ui-1.9.0.custom.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/js/jquery-ui-1.9.0.custom.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/js/jquery.fixedheadertable.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/templates/authorisation/login.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/manage.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/models.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/models.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/js/moment.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/js/moment.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/templatetags/monitoringengine_ui_tags.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/templates/authorisation/passwd.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/templates/authorisation/passwd_done.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/monitoringengine_ui/positions.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/js/positions.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/templates/authorisation/emails/recovery_password.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/templates/authorisation/emails/registration.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/requirements.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/templates/authorisation/reset_password.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/templates/authorisation/reset_password_request.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/js/resource-page.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/monitoringengine_ui/resource.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/robots.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/settings.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/settings.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/css/sidenav.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/css/slider.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/templates/authorisation/social_auth_buttons.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/css/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/captcha_solver/templates/captcha_solver/thanks.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/urls.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/urls.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/captcha_solver/urls.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/templates/authorisation/user_info.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/monitoringengine_ui/users.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/utils.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/utils.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/monitoringengine_ui/view-ok.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/authorisation/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/captcha_solver/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/forms/wizard.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitoringengine_ui/wsgi.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/zenforms/zenform_prefix.html" />
+    </list>
+    <ignored path="django.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="django" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="resource.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/monitoringengine_ui/resource.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="138" column="14" selection-start="6314" selection-end="6314" vertical-scroll-proportion="0.30215827" vertical-offset="2316" max-vertical-offset="4968">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="change_client.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/monitoringengine_ui/change_client.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/monitoringengine_ui/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="91" column="0" selection-start="2749" selection-end="2749" vertical-scroll-proportion="0.0" vertical-offset="1242" max-vertical-offset="5256">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/templates/monitoringengine_ui/resource.html" />
+        <option value="$PROJECT_DIR$/monitoringengine_ui/urls.py" />
+        <option value="$PROJECT_DIR$/monitoringengine_ui/views.py" />
+        <option value="$PROJECT_DIR$/media/js/resource-page.js" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="64" />
+    <option name="y" value="-4" />
+    <option name="width" value="1303" />
+    <option name="height" value="773" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="django" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="django" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="django" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="django" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="django" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monitoringengine_ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Документы/Graphs" />
+    <property name="FullScreen" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <PyConsoleSettings />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="django" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="django" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="django" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="django" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="django" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="django" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <list size="0" />
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7dbf0694-667e-4e26-bcbb-839ba75f5a8b" name="Default" comment="" />
+      <created>1391752902275</created>
+      <updated>1391752902275</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="64" y="-4" width="1303" height="773" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19014084" sideWeight="0.6704" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/templates/monitoringengine_ui/resource.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="236" column="52" selection-start="10593" selection-end="10593" vertical-scroll-proportion="0.0" vertical-offset="4052" max-vertical-offset="4878">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/monitoringengine_ui/change_client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monitoringengine_ui/captcha_solver/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="574" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/monitoringengine_ui/resource.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="138" column="14" selection-start="6314" selection-end="6314" vertical-scroll-proportion="0.30215827" vertical-offset="2316" max-vertical-offset="4968">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monitoringengine_ui/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="0" selection-start="2749" selection-end="2749" vertical-scroll-proportion="0.0" vertical-offset="1242" max-vertical-offset="5256">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/dist-packages/django/conf/urls/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="347" selection-end="347" vertical-scroll-proportion="-0.86762077" vertical-offset="593" max-vertical-offset="1152" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monitoringengine_ui/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="32" selection-start="2778" selection-end="2778" vertical-scroll-proportion="0.0" vertical-offset="728" max-vertical-offset="1386">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monitoringengine_ui/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="451" column="21" selection-start="20469" selection-end="20475" vertical-scroll-proportion="-6.5555553" vertical-offset="7941" max-vertical-offset="10980">
+          <folding>
+            <element signature="e#24#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/js/resource-page.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="98" column="22" selection-start="2604" selection-end="2604" vertical-scroll-proportion="-13.37037" vertical-offset="1403" max-vertical-offset="5580">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+

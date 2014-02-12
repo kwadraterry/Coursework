@@ -1,0 +1,111 @@
+{% extends 'monitoringengine_ui/users.html' %}
+{% load monitoringengine_ui_tags %}
+{% load l10n %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/slider.css"/>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/classic.css" type="text/css"/>
+
+
+
+{% endblock css %}
+
+{%block breadcrumbs%}
+<li class="dropdown">
+    <a href="{{ object.resource.account.get_absolute_url }}" class="navbar-brand">{{object.resource.account|truncatechars:20}}</a>
+    <a href="#" class="navbar-brand dropdown-toggle small-dropdown" style="padding:15px 5px;margin:0 -10px"
+       data-toggle="dropdown"><b class="caret"></b></a>
+    <ul class="dropdown-menu">
+        <li><a href="/">Все аккаунты</a></li>
+        <li class="divider"></li>
+        {% for acc in user|accounts %}
+        {% if acc != object.resource.account %}
+        <li><a href="{{ acc.get_absolute_url }}">{{ acc }}</a></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</li>
+
+<li class="dropdown" style="margin:0 0 0 30px">
+    <a href="{{ object.resource.get_absolute_url }}" class="navbar-brand">{{ object.resource|truncatechars:20 }}</a>
+    <a href="#" class="navbar-brand dropdown-toggle small-dropdown" style="padding:15px 5px;margin:0 -10px"
+       data-toggle="dropdown"><b class="caret"></b></a>
+    <ul class="dropdown-menu">
+        <li><a href="/">Все ресурсы</a></li>
+        <li class="divider"></li>
+        {% for res in object.resource.account.resources.all %}
+        {% if res != object.resource %}
+        <li><a href="{{ res.get_absolute_url }}">{{ res }}</a></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</li>
+
+<li class="dropdown" style="margin:0 0 0 30px">
+    <a href="{{ object.get_absolute_url }}" class="navbar-brand">{{ object|truncatechars:20 }}</a>
+    <a href="#" class="navbar-brand dropdown-toggle small-dropdown" style="padding:15px 5px;margin:0 -10px"
+       data-toggle="dropdown"><b class="caret"></b></a>
+    <ul class="dropdown-menu">
+        <li><a href="/">Все представления</a></li>
+        <li class="divider"></li>
+        {% for view in object.resource.views.all %}
+        {% if view != object %}
+        <li><a href="{{ view.get_absolute_url }}">{{ view }}</a></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</li>
+{%endblock breadcrumbs%}
+
+{% block left_menu %}
+{% if user|can_read:object %}
+<li><a href="#view"><i class="glyphicon glyphicon-chevron-right pull-right"></i>Информация о представлении</a></li>
+<li><a href="#positions"><i class="glyphicon glyphicon-chevron-right pull-right"></i>Позиции</a></li>
+{% endif %}
+{{ block.super }}
+{% endblock %}
+
+{% block content %}
+{% if user|can_read:object %}
+<section id="view">
+    <div class="page-header">
+        <h1>{{ object.resource }}: {{ object }}</h1>
+    </div>
+</section>
+<section id="positions">
+    <div class="page-header">
+        <h1>Позиции
+            {% if None %}
+            <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></a>
+            {% endif %}
+        </h1>
+    </div>
+
+    {# date range picker #}
+    {# end date range picker #}
+
+    <div class="spinner">
+        <img src="{{ STATIC_URL }}img/ajax-loader.gif"/>
+    </div>
+    <div class="positions-results">
+    </div>
+</section>
+{% endif %}
+{% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script type="text/javascript" src="{{ STATIC_URL }}js/jQDateRangeSlider-withRuler-min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function (){
+        URL_POSITIONS = '{% url positions pk=object.id %}';
+        URL_FRESH = '{% url check_fresh pk=object.id %}';
+        URL_SAVE = '{% url save_view pk=object.id %}';
+        URL_SYNC = '{% url view_sync pk=object.id %}';
+
+    });
+
+</script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/positions.js"></script>
+{% endblock js %}
